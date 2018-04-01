@@ -1,6 +1,5 @@
 package proyectoayudantia;
 
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -13,7 +12,8 @@ public class Luchador {
     private int ATK;
     private int DEF;
     private int SPD;
-
+    
+    
     public Luchador (){
         
         this.Nombre = ChosenName();
@@ -30,23 +30,23 @@ public class Luchador {
         String name="";
         
         do{
-            Output("Seleccione un nombre");
-            Output("1.Manjarsh");
-            Output("2.Zafrada");
-            Output("3.Vidal");
-            Output("4.Junior Playboy");
-            Output("5.Laarson");
-            Output("6.Tío Emilio");
-            Output("7.Alexis");
-            Output("8.Salfate");
-            Output("9.Pedro Angel");
-            Output("10.Profesor Rosa");
-            Output("11.Guru Guru");
-            Output("12.Censista");
-            Output("13.Pastor Soto");
-            Output("14.Kramer");
-            Output("15.Julio Cesar");
-            //opc = ConvertToInt(Input());
+            IO.output("Seleccione un nombre");
+            IO.output("1.Manjarsh");
+            IO.output("2.Zafrada");
+            IO.output("3.Vidal");
+            IO.output("4.Junior Playboy");
+            IO.output("5.Laarson");
+            IO.output("6.Tío Emilio");
+            IO.output("7.Alexis");
+            IO.output("8.Salfate");
+            IO.output("9.Pedro Angel");
+            IO.output("10.Profesor Rosa");
+            IO.output("11.Guru Guru");
+            IO.output("12.Censista");
+            IO.output("13.Pastor Soto");
+            IO.output("14.Kramer");
+            IO.output("15.Julio Cesar");
+            //opc = ConvertToInt(IO.input());
             opc= ThreadLocalRandom.current().nextInt(1,15+1);
         
             switch(opc){
@@ -80,14 +80,14 @@ public class Luchador {
                          break;
                 case 15: name = "Julio Cesar";
                          break;
-                default: Output("Error");
+                default: IO.output("Error");
                          break;
             } 
         }
         while(opc<0 && opc>16);
         
-        //Output(name);
-        Output("");
+        //IO.output(name);
+        IO.output("");
         return name;
         
     }
@@ -97,10 +97,10 @@ public class Luchador {
         String faction="";
         
         do{
-            Output("Seleccione una facción");
-            Output("1.Fuego");
-            Output("2.Agua");
-            Output("3.Tierra");
+            IO.output("Seleccione una facción");
+            IO.output("1.Fuego");
+            IO.output("2.Agua");
+            IO.output("3.Tierra");
             //opc = ConvertToInt(Input());
             opc= ThreadLocalRandom.current().nextInt(1,3+1);
         
@@ -111,14 +111,14 @@ public class Luchador {
                          break;
                 case 3:  faction = "Tierra";
                          break;
-                default: Output("Error");
+                default: IO.output("Error");
                          break;
             } 
         }
         while(opc<1 && opc>3);
         
-        //Output(faction);
-        Output("");
+        //IO.output(faction);
+        IO.output("");
         return faction;
     }
     
@@ -148,35 +148,13 @@ public class Luchador {
 
     public void showInfo(){
         
-       Output("El nombre es: "+ getNombre());
-       Output("La facción es: "+ getFaccion());
-       Output("La cantidad de estrellas es: "+ getStars());
-       Output("El ataque es: "+ getATK());
-       Output("La defensa es: "+ getDEF());
-       Output("La fuerza vital es: "+ getHP());
-       Output("La velocidad es: "+ getSPD());
-    }
-    
-    
-    
-    public static String Input(){
-       Scanner sc = new Scanner(System.in);
-       String valEntrada = sc.nextLine();
-       return valEntrada;
-    }
-    
-    public static String ConvertToString(double infoEntrada){
-        String salida = String.valueOf(infoEntrada);
-        return salida;
-    }
-    
-    public static int ConvertToInt(String input){
-       int salida = Integer.parseInt(input);
-       return salida;
-    }
-    
-    public static void Output(String entrada){
-        System.out.println(entrada);
+       IO.output("El nombre es: "+ getNombre());
+       IO.output("La facción es: "+ getFaccion());
+       IO.output("La cantidad de estrellas es: "+ getStars());
+       IO.output("El ataque es: "+ getATK());
+       IO.output("La defensa es: "+ getDEF());
+       IO.output("La fuerza vital es: "+ getHP());
+       IO.output("La velocidad es: "+ getSPD());
     }
     
     
