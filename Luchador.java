@@ -29,24 +29,23 @@ public class Luchador {
         int opc=0;
         String name="";
         
-        do{
-            IO.output("Seleccione un nombre");
-            IO.output("1.Manjarsh");
-            IO.output("2.Zafrada");
-            IO.output("3.Vidal");
-            IO.output("4.Junior Playboy");
-            IO.output("5.Laarson");
-            IO.output("6.Tío Emilio");
-            IO.output("7.Alexis");
-            IO.output("8.Salfate");
-            IO.output("9.Pedro Angel");
-            IO.output("10.Profesor Rosa");
-            IO.output("11.Guru Guru");
-            IO.output("12.Censista");
-            IO.output("13.Pastor Soto");
-            IO.output("14.Kramer");
-            IO.output("15.Julio Cesar");
-            opc= ThreadLocalRandom.current().nextInt(1,15+1);
+        IO.output("Seleccione un nombre");
+        IO.output("1.Manjarsh");
+        IO.output("2.Zafrada");
+        IO.output("3.Vidal");
+        IO.output("4.Junior Playboy");
+        IO.output("5.Laarson");
+        IO.output("6.Tío Emilio");
+        IO.output("7.Alexis");
+        IO.output("8.Salfate");
+        IO.output("9.Pedro Angel");
+        IO.output("10.Profesor Rosa");
+        IO.output("11.Guru Guru");
+        IO.output("12.Censista");
+        IO.output("13.Pastor Soto");
+        IO.output("14.Kramer");
+        IO.output("15.Julio Cesar");
+        opc= ThreadLocalRandom.current().nextInt(1,15+1);
         
             switch(opc){
                 case 1:  name = "Manjarsh";
@@ -79,11 +78,7 @@ public class Luchador {
                          break;
                 case 15: name = "Julio Cesar";
                          break;
-                default: IO.output("Error");
-                         break;
-            } 
-        }
-        while(opc<0 && opc>16);
+            }
         
         IO.output("");
         return name;
@@ -93,26 +88,21 @@ public class Luchador {
     private String ChosenFaction(){
         int opc=0;
         String faction="";
+
+        IO.output("Seleccione una facción");
+        IO.output("1.Fuego");
+        IO.output("2.Agua");
+        IO.output("3.Tierra");
+        opc= ThreadLocalRandom.current().nextInt(1,3+1);
         
-        do{
-            IO.output("Seleccione una facción");
-            IO.output("1.Fuego");
-            IO.output("2.Agua");
-            IO.output("3.Tierra");
-            opc= ThreadLocalRandom.current().nextInt(1,3+1);
-        
-            switch(opc){
-                case 1:  faction = "Fuego";
-                         break;
-                case 2:  faction = "Agua";
-                         break;
-                case 3:  faction = "Tierra";
-                         break;
-                default: IO.output("Error");
-                         break;
+        switch(opc){
+            case 1:  faction = "Fuego";
+                     break;
+            case 2:  faction = "Agua";
+                     break;
+            case 3:  faction = "Tierra";
+                     break;
             } 
-        }
-        while(opc<1 && opc>3);
         
         IO.output("");
         return faction;
@@ -153,9 +143,6 @@ public class Luchador {
        IO.output("La velocidad es: "+ getSpd());
     }
     
-    
-    
-
     public String getNombre() {
         return this.nombre;
     }
