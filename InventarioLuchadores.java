@@ -6,12 +6,16 @@ import java.util.ArrayList;
 public class InventarioLuchadores{
     
     private ArrayList<Luchador> luchadores;
-    private int cantMax=25;    
+    private int cantMax=25;
+    
+    public int VerCantLuchadores(){
+        return luchadores.size();    
+    }
     
     public void AgregarLuchadores(){
         Luchador L1 = new Luchador();
         
-        if(luchadores.size()<this.cantMax){
+        if(luchadores.size()<=cantMax){
             luchadores.add(L1);
         }
         else{
@@ -19,11 +23,8 @@ public class InventarioLuchadores{
         } 
     }
     
-    public int VerCantLuchadores(){
-        return luchadores.size();    
-    }
     
-    private void BuscarLuchadoresFaccion(String faccion) {
+    public void BuscarLuchadoresFaccion(String faccion) {
         int i;
         
         for(i=0; i<luchadores.size();i++){
@@ -33,7 +34,7 @@ public class InventarioLuchadores{
         }
     }
     
-    private void BuscarLuchadoresRango(int rango) {
+    public void BuscarLuchadoresRango(int rango) {
         int i;
         
         for(i=0; i<luchadores.size();i++){
@@ -43,7 +44,7 @@ public class InventarioLuchadores{
         }  
     }
     
-    private void Filtrar(){
+    public void Filtrar(){
         int opc=0;
         
         do{
@@ -74,11 +75,11 @@ public class InventarioLuchadores{
         while(opc>0 && opc<5);
     }
     
-    private void quitarLuchadores(ArrayList<Luchador> luchadores){
+    public void QuitarLuchadores(){
         int opc=0;
         
         do{
-        mostrarAllLuchadores(luchadores);
+        MostrarAllLuchadores();
         IO.output("Seleccione el numero del luchador a eliminar");
         opc = IO.leerInt()-1;
         }
@@ -86,7 +87,7 @@ public class InventarioLuchadores{
             luchadores.remove(opc);
     }
     
-    private void mostrarAllLuchadores(ArrayList<Luchador> luchadores){
+    public void MostrarAllLuchadores(){
         for(int x=0;x<luchadores.size();x++) {
             IO.output((x+1)+".");
             IO.output("Nombre: "+luchadores.get(x).getNombre());
@@ -95,12 +96,12 @@ public class InventarioLuchadores{
         }
     }
     
-    private void mostrarSpecificLuchador(ArrayList<Luchador>luchadores){
+    public void MostrarSpecificLuchador(){
         int opc=0;
         
         do{
             IO.output("Seleccione el numero de algún luchador para mostrar toda su información");
-            mostrarAllLuchadores(luchadores);
+            MostrarAllLuchadores();
             opc= IO.leerInt()-1;
             
             if(opc>-1 && opc<luchadores.size()-1){
@@ -113,5 +114,5 @@ public class InventarioLuchadores{
         }
         while(opc>0 && opc<luchadores.size());
     }
- 
+       
 }
