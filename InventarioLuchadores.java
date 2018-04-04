@@ -6,17 +6,22 @@ import java.util.ArrayList;
 public class InventarioLuchadores{
     
     private ArrayList<Luchador> luchadores;
+    private int cantMax=25;    
     
+    public void AgregarLuchadores(){
+        Luchador L1 = new Luchador();
+        
+        if(luchadores.size()<this.cantMax){
+            luchadores.add(L1);
+        }
+        else{
+            IO.output("Inventario lleno");
+        } 
+    }
     
     public int VerCantLuchadores(){
         return luchadores.size();    
     }
-    
-    private void AgregarLuchadores(){
-        Luchador L1 = new Luchador();
-        luchadores.add(L1);
-    }
-    
     
     private void BuscarLuchadoresFaccion(String faccion) {
         int i;
