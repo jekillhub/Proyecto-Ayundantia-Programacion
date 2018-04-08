@@ -1,4 +1,3 @@
-
 package proyectoayudantia;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,8 +6,9 @@ public class ObjetoEquipable {
     
     private int mejoraTotal;
     private String caracteristica;
+    private int rango;
     
-    private void generadorCaracteristica(){
+    private void GeneradorCaracteristica(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
         
         if(posibilidad==1){
@@ -26,53 +26,52 @@ public class ObjetoEquipable {
     
     }
     
-    private int mejoraBase(){
+    private int MejoraBase(){
         int base = ThreadLocalRandom.current().nextInt(1,9+1);
         return base;  
     }
     
-    private int generadorEstrellas(){
+    private void GeneradorRango(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,100+1);
-        int rango=0;
         
         if(posibilidad<=20){
-            rango=1;
+            setRango(1);
         }
         if(posibilidad>20 && posibilidad<=40){
-            rango=2;
+            setRango(2);
         }
         if(posibilidad>40 && posibilidad<=60){
-            rango=3;
+            setRango(3);
         }
         if(posibilidad>60 && posibilidad<=75){
-            rango=4;
+            setRango(4);
         }
         if(posibilidad>75 && posibilidad<=85){
-            rango=5;
+            setRango(5);
         }
         if(posibilidad>85 && posibilidad<=90){
-            rango=6;
+            setRango(6);
         }
         if(posibilidad>90 && posibilidad<=94){
-            rango=7;
+            setRango(7);
         }
         if(posibilidad>94 && posibilidad<=97){
-            rango=8;
+            setRango(8);
         }
         if(posibilidad>97 && posibilidad<=99){
-            rango=9;
+            setRango(9);
         }
         if(posibilidad>99 && posibilidad<=100){
-            rango=10;
+            setRango(10);
         }
-        return rango;
+    }
+
+    private void GeneradorMejoraTotal(){
+        GeneradorRango();
+        setMejoraTotal(MejoraBase()*getRango());   
     }
     
-    private void generadorMejoraTotal(int base, int estrellas){
-        setMejoraTotal(mejoraBase()*generadorEstrellas());   
-    }
-    
-    public void showMejora(int mejoraTotal){
+    public void ShowMejora(){
         IO.output("La mejora del objeto equipable es de: "+getMejoraTotal());
     }
 
@@ -90,6 +89,14 @@ public class ObjetoEquipable {
 
     public void setCaracteristica(String caracteristica) {
         this.caracteristica = caracteristica;
+    }
+    
+    public void setRango(int rango) {
+        this.rango = rango;
+    }
+
+    public int getRango() {
+        return rango;
     }
     
     

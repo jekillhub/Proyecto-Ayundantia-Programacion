@@ -53,7 +53,7 @@ public class InventarioLuchadores{
         IO.output("2. Filtrar por Rango");
         opc = IO.leerInt();
         
-            if(opc>0 && opc<5){
+            if(opc>0 && opc<2){
                 String entrada="";
             
                 switch(opc){
@@ -72,7 +72,7 @@ public class InventarioLuchadores{
                 IO.output("");
             }
         }
-        while(opc>0 && opc<5);
+        while(opc>0 && opc<3);
     }
     
     public void QuitarLuchadores(){
@@ -114,5 +114,48 @@ public class InventarioLuchadores{
         }
         while(opc>0 && opc<luchadores.size());
     }
-       
+ 
+
+    public void MenuInventario(){
+        int opc=0;
+        IO.output("Bienvenido al Menú del Inventario de Luchadores");
+        
+        do{
+        IO.output("Seleccione alguna de las opciones siguientes");
+        IO.output("1. Agregar Luchadores");
+        IO.output("2. Quitar Luchadores");
+        IO.output("3. Ver Cantidad de Luchadores");
+        IO.output("4. Mostrar todos los Luchadores");
+        IO.output("5. Mostrar toda la información de algun Luchador");
+        IO.output("6. Filtro Avanzada de Luchadores");
+        IO.output("7. Salir");
+        opc= IO.leerInt();
+        
+            if(opc>0 && opc<8){
+                switch(opc){
+                    case 1: AgregarLuchadores();
+                        break;
+                    case 2: QuitarLuchadores();
+                        break;
+                    case 3: VerCantLuchadores();
+                        break;
+                    case 4: MostrarAllLuchadores();
+                        break;
+                    case 5: MostrarSpecificLuchador();
+                        break;
+                    case 6: Filtrar();
+                        break;
+                    case 7: break;
+                }
+            }
+            else{
+                IO.output("Error, opción no válida");
+                IO.output("");
+            }
+        }
+        while(opc>0 && opc<8);
+      
+    }
+    
+    
 }
