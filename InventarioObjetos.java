@@ -12,35 +12,35 @@ public class InventarioObjetos{
     
     private void MostrarAllObjetos(){
         for(int x=0;x<objetos.size();x++) {
-            IO.output((x+1)+".");
-            IO.output("Caracteristica: "+objetos.get(x).getCaracteristica());
-            IO.output("Rango: "+objetos.get(x).getRango());
-            IO.output("Mejora Total: "+objetos.get(x).getMejoraTotal());
+            IO.Output((x+1)+".");
+            IO.Output("Caracteristica: "+objetos.get(x).getCaracteristica());
+            IO.Output("Rango: "+objetos.get(x).getRango());
+            IO.Output("Mejora Total: "+objetos.get(x).getMejoraTotal());
         }
     }
     
-    private int VerCantLuchadores(){
+    private int VerCantObjetos(){
         return objetos.size();    
     }
     
-    private void AgregarLuchadores(){
+    private void AgregarObjetos(){
         ObjetoEquipable obj1 = new ObjetoEquipable();
         
         if(objetos.size()<=cantMax){
             objetos.add(obj1);
         }
         else{
-            IO.output("Inventario lleno");
+            IO.Output("Inventario lleno");
         } 
     }
 
-    private void QuitarLuchadores(){
+    private void QuitarObjetos(){
         int opc=0;
         
         do{
         MostrarAllObjetos();
-        IO.output("Seleccione el numero del luchador a eliminar");
-        opc = IO.leerInt()-1;
+        IO.Output("Seleccione el numero del luchador a eliminar");
+        opc = IO.LeerInt()-1;
         }
         while(opc>-1 && opc<objetos.size()-1);
             objetos.remove(opc);
@@ -51,16 +51,16 @@ public class InventarioObjetos{
         
         for(i=0; i<objetos.size();i++){
             if(objetos.get(i).getRango() == rango){
-            IO.output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
             }
         }  
     }
     
     private void FiltrarRango(){
         int opc=0;
-        IO.output("¿Que tipo de rango desea encontrar?");
-        String entrada = IO.leerString();
-        BuscarLuchadoresRango(IO.convertToInt(entrada));                
+        IO.Output("¿Que tipo de rango desea encontrar?");
+        String entrada = IO.LeerString();
+        BuscarLuchadoresRango(IO.ConvertToInt(entrada));                
     }
  
 }

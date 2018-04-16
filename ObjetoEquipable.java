@@ -8,6 +8,12 @@ public class ObjetoEquipable {
     private String caracteristica;
     private int rango;
     
+    public ObjetoEquipable() {
+        GeneradorMejoraTotal();
+        GeneradorCaracteristica();
+    }
+    
+    
     private void GeneradorCaracteristica(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
         
@@ -25,7 +31,7 @@ public class ObjetoEquipable {
         }
     
     }
-    
+
     private int MejoraBase(){
         int base = ThreadLocalRandom.current().nextInt(1,9+1);
         return base;  
@@ -72,7 +78,7 @@ public class ObjetoEquipable {
     }
     
     public void ShowMejora(){
-        IO.output("La mejora del objeto equipable es de: "+getMejoraTotal());
+        IO.Output("La mejora del objeto equipable es de: "+getMejoraTotal());
     }
 
     public int getMejoraTotal() {

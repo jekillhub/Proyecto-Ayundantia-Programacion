@@ -8,107 +8,107 @@ public class InventarioLuchadores{
     private ArrayList<Luchador> luchadores;
     private int cantMax=25;
     
-    public int VerCantLuchadores(){
+    private int VerCantLuchadores(){
         return luchadores.size();    
     }
     
-    public void AgregarLuchadores(){
+    private void AgregarLuchadores(){
         Luchador L1 = new Luchador();
         
         if(luchadores.size()<=cantMax){
             luchadores.add(L1);
         }
         else{
-            IO.output("Inventario lleno");
+            IO.Output("Inventario lleno");
         } 
     }
     
     
-    public void BuscarLuchadoresFaccion(String faccion) {
+    private void BuscarLuchadoresFaccion(String faccion) {
         int i;
         
         for(i=0; i<luchadores.size();i++){
             if(luchadores.get(i).getFaccion().equals(faccion)){
-            IO.output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
             }
         }
     }
     
-    public void BuscarLuchadoresRango(int rango) {
+    private void BuscarLuchadoresRango(int rango) {
         int i;
         
         for(i=0; i<luchadores.size();i++){
-            if(luchadores.get(i).getStars() == rango){
-            IO.output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+            if(luchadores.get(i).getRango() == rango){
+            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
             }
         }  
     }
     
-    public void Filtrar(){
+    private void Filtrar(){
         int opc=0;
         
         do{
-        IO.output("Seleccione alguna de las opciones siguientes");
-        IO.output("1. Filtrar por Facción");
-        IO.output("2. Filtrar por Rango");
-        opc = IO.leerInt();
+        IO.Output("Seleccione alguna de las opciones siguientes");
+        IO.Output("1. Filtrar por Facción");
+        IO.Output("2. Filtrar por Rango");
+        opc = IO.LeerInt();
         
             if(opc>0 && opc<2){
                 String entrada="";
             
                 switch(opc){
-                    case 1: IO.output("¿Que tipo de facción desea encontrar?");
-                            entrada = IO.leerString();
+                    case 1: IO.Output("¿Que tipo de facción desea encontrar?");
+                            entrada = IO.LeerString();
                             BuscarLuchadoresFaccion(entrada);
                             break;
-                    case 2: IO.output("¿Que tipo de rango desea encontrar?");
-                            entrada = IO.leerString();
-                            BuscarLuchadoresRango(IO.convertToInt(entrada));
+                    case 2: IO.Output("¿Que tipo de rango desea encontrar?");
+                            entrada = IO.LeerString();
+                            BuscarLuchadoresRango(IO.ConvertToInt(entrada));
                             break;
                 }
             }
             else{
-                IO.output("Error, opción no válida");
-                IO.output("");
+                IO.Output("Error, opción no válida");
+                IO.Output("");
             }
         }
         while(opc>0 && opc<3);
     }
     
-    public void QuitarLuchadores(){
+    private void QuitarLuchadores(){
         int opc=0;
         
         do{
         MostrarAllLuchadores();
-        IO.output("Seleccione el numero del luchador a eliminar");
-        opc = IO.leerInt()-1;
+        IO.Output("Seleccione el numero del luchador a eliminar");
+        opc = IO.LeerInt()-1;
         }
         while(opc>-1 && opc<luchadores.size()-1);
             luchadores.remove(opc);
     }
     
-    public void MostrarAllLuchadores(){
+    private void MostrarAllLuchadores(){
         for(int x=0;x<luchadores.size();x++) {
-            IO.output((x+1)+".");
-            IO.output("Nombre: "+luchadores.get(x).getNombre());
-            IO.output("Facción: "+luchadores.get(x).getFaccion());
-            IO.output("Rango: "+ luchadores.get(x).getStars());
+            IO.Output((x+1)+".");
+            IO.Output("Nombre: "+luchadores.get(x).getNombre());
+            IO.Output("Facción: "+luchadores.get(x).getFaccion());
+            IO.Output("Rango: "+ luchadores.get(x).getRango());
         }
     }
     
-    public void MostrarSpecificLuchador(){
+    private void MostrarSpecificLuchador(){
         int opc=0;
         
         do{
-            IO.output("Seleccione el numero de algún luchador para mostrar toda su información");
+            IO.Output("Seleccione el numero de algún luchador para mostrar toda su información");
             MostrarAllLuchadores();
-            opc= IO.leerInt()-1;
+            opc= IO.LeerInt()-1;
             
             if(opc>-1 && opc<luchadores.size()-1){
                 luchadores.get(opc).showInfo();
             }
             else{
-                IO.output("Error, opción no válida");
+                IO.Output("Error, opción no válida");
             }
             
         }
@@ -116,46 +116,4 @@ public class InventarioLuchadores{
     }
  
 
-    public void MenuInventario(){
-        int opc=0;
-        IO.output("Bienvenido al Menú del Inventario de Luchadores");
-        
-        do{
-        IO.output("Seleccione alguna de las opciones siguientes");
-        IO.output("1. Agregar Luchadores");
-        IO.output("2. Quitar Luchadores");
-        IO.output("3. Ver Cantidad de Luchadores");
-        IO.output("4. Mostrar todos los Luchadores");
-        IO.output("5. Mostrar toda la información de algun Luchador");
-        IO.output("6. Filtro Avanzada de Luchadores");
-        IO.output("7. Salir");
-        opc= IO.leerInt();
-        
-            if(opc>0 && opc<8){
-                switch(opc){
-                    case 1: AgregarLuchadores();
-                        break;
-                    case 2: QuitarLuchadores();
-                        break;
-                    case 3: VerCantLuchadores();
-                        break;
-                    case 4: MostrarAllLuchadores();
-                        break;
-                    case 5: MostrarSpecificLuchador();
-                        break;
-                    case 6: Filtrar();
-                        break;
-                    case 7: break;
-                }
-            }
-            else{
-                IO.output("Error, opción no válida");
-                IO.output("");
-            }
-        }
-        while(opc>0 && opc<8);
-      
-    }
-    
-    
 }

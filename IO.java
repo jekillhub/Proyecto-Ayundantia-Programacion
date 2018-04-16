@@ -5,51 +5,51 @@ import java.util.Scanner;
 
 public class IO {
     
-    public static String leerString(){
+    public static String LeerString(){
        Scanner sc = new Scanner(System.in);
        String valEntrada = sc.nextLine();
        return valEntrada;
     }
 
-    public static int leerInt(){
+    public static int LeerInt(){
 	Scanner sc = new Scanner(System.in);
 	int output = sc.nextInt();
 	return output;
 	}
 
-    public static double leerDouble(){
+    public static double LeerDouble(){
 	Scanner sc= new Scanner(System.in);
 	double output = sc.nextDouble();
 	return output;
 	}
 
-    public static boolean leerBoolean(){
+    public static boolean LeerBoolean(){
 	Scanner sc= new Scanner(System.in);
 	boolean output = sc.nextBoolean();
 	return output;
 	}
     
-    public static String convertToString(double infoEntrada){
+    public static String ConvertToString(double infoEntrada){
         String salida = String.valueOf(infoEntrada);
         return salida;
     }
     
-    public static int convertToInt(String input){
+    public static int ConvertToInt(String input){
        int salida = Integer.parseInt(input);
        return salida;
     }
     
-    public static boolean convertToBoolean(String input){
+    public static boolean ConvertToBoolean(String input){
        boolean output = Boolean.parseBoolean(input);
        return output;
     }
     
-    public static int convertDoubleToInt(double infoEntrada){
+    public static int ConvertDoubleToInt(double infoEntrada){
         int salida = (int)infoEntrada;
         return salida;
     }
 
-    public static void output(String entrada){
+    public static void Output(String entrada){
         System.out.println(entrada);
     }
     

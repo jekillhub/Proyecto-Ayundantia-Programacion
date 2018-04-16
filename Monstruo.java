@@ -8,6 +8,7 @@ public class Monstruo {
     private int atk;
     private int def;
     private int spd;
+    private String faccion;
     ObjetoEquipable obj1 = new ObjetoEquipable();
     
     public Monstruo (){
@@ -16,18 +17,50 @@ public class Monstruo {
         this.atk = (ThreadLocalRandom.current().nextInt(1000,1500+1));
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1));
         this.spd = (ThreadLocalRandom.current().nextInt(10,100+1));
+        this.faccion= ChosenFaction();
     }
     
     private void ObjetoDropeable(){
         obj1.ShowMejora();
     }
     
+    private String ChosenFaction(){
+        int opc=0;
+        String faction="";
+
+        //IO.Output("Seleccione una facción");
+        //IO.Output("1.Fuego");
+        //IO.Output("2.Agua");
+        //IO.Output("3.Tierra");
+        opc= ThreadLocalRandom.current().nextInt(1,3+1);
+        
+        switch(opc){
+            case 1:  faction = "Fuego";
+                     break;
+            case 2:  faction = "Agua";
+                     break;
+            case 3:  faction = "Tierra";
+                     break;
+            } 
+        
+        IO.Output("");
+        return faction;
+    }
     public void showInfo(){
  
-       IO.output("El ataque es: "+ getAtk());
-       IO.output("La defensa es: "+ getDef());
-       IO.output("La fuerza vital es: "+ getHp());
-       IO.output("La velocidad es: "+ getSpd());
+       IO.Output("El ataque es: "+ getAtk());
+       IO.Output("La defensa es: "+ getDef());
+       IO.Output("La fuerza vital es: "+ getHp());
+       IO.Output("La velocidad es: "+ getSpd());
+       IO.Output("La facción es: "+ getFaccion());
+    }
+
+    public void setFaccion(String faccion) {
+        this.faccion = faccion;
+    }
+
+    public String getFaccion() {
+        return this.faccion;
     }
     
     public int getHp() {

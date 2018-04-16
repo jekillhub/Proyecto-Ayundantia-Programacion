@@ -7,7 +7,7 @@ public class Luchador {
     
     private String nombre;
     private String faccion;
-    private int stars;
+    private int rango;
     private int hp;
     private int atk;
     private int def;
@@ -18,33 +18,33 @@ public class Luchador {
         
         this.nombre = ChosenName();
         this.faccion = ChosenFaction();
-        this.stars = GeneratorStars();
-        this.hp = (ThreadLocalRandom.current().nextInt(200,500+1))*this.stars;
-        this.atk = (ThreadLocalRandom.current().nextInt(20,70+1))*this.stars;
-        this.def = (ThreadLocalRandom.current().nextInt(5,25+1))*this.stars;
-        this.spd = (ThreadLocalRandom.current().nextInt(10,100+1))*this.stars;
+        this.rango = GeneratorRango();
+        this.hp = (ThreadLocalRandom.current().nextInt(200,500+1))*this.rango;
+        this.atk = (ThreadLocalRandom.current().nextInt(20,70+1))*this.rango;
+        this.def = (ThreadLocalRandom.current().nextInt(5,25+1))*this.rango;
+        this.spd = (ThreadLocalRandom.current().nextInt(10,100+1))*this.rango;
     }
     
     private String ChosenName(){
         int opc=0;
         String name="";
         
-        IO.output("Seleccione un nombre");
-        IO.output("1.Manjarsh");
-        IO.output("2.Zafrada");
-        IO.output("3.Vidal");
-        IO.output("4.Junior Playboy");
-        IO.output("5.Laarson");
-        IO.output("6.Tío Emilio");
-        IO.output("7.Alexis");
-        IO.output("8.Salfate");
-        IO.output("9.Pedro Angel");
-        IO.output("10.Profesor Rosa");
-        IO.output("11.Guru Guru");
-        IO.output("12.Censista");
-        IO.output("13.Pastor Soto");
-        IO.output("14.Kramer");
-        IO.output("15.Julio Cesar");
+        //IO.Output("Seleccione un nombre");
+        //IO.Output("1.Manjarsh");
+        //IO.Output("2.Zafrada");
+        //IO.Output("3.Vidal");
+        //IO.Output("4.Junior Playboy");
+        //IO.Output("5.Laarson");
+        //IO.Output("6.Tío Emilio");
+        //IO.Output("7.Alexis");
+        //IO.Output("8.Salfate");
+        //IO.Output("9.Pedro Angel");
+        //IO.Output("10.Profesor Rosa");
+        //IO.Output("11.Guru Guru");
+        //IO.Output("12.Censista");
+        //IO.Output("13.Pastor Soto");
+        //IO.Output("14.Kramer");
+        //IO.Output("15.Julio Cesar");
         opc= ThreadLocalRandom.current().nextInt(1,15+1);
         
             switch(opc){
@@ -80,7 +80,7 @@ public class Luchador {
                          break;
             }
         
-        IO.output("");
+        IO.Output("");
         return name;
         
     }
@@ -89,10 +89,10 @@ public class Luchador {
         int opc=0;
         String faction="";
 
-        IO.output("Seleccione una facción");
-        IO.output("1.Fuego");
-        IO.output("2.Agua");
-        IO.output("3.Tierra");
+        //IO.Output("Seleccione una facción");
+        //IO.Output("1.Fuego");
+        //IO.Output("2.Agua");
+        //IO.Output("3.Tierra");
         opc= ThreadLocalRandom.current().nextInt(1,3+1);
         
         switch(opc){
@@ -104,11 +104,11 @@ public class Luchador {
                      break;
             } 
         
-        IO.output("");
+        IO.Output("");
         return faction;
     }
     
-    private int GeneratorStars(){
+    private int GeneratorRango(){
         
         int probabilidad = ThreadLocalRandom.current().nextInt(1,100+1);
         int estrellas = 0;
@@ -133,14 +133,14 @@ public class Luchador {
     }
 
     public void showInfo(){
-        
-       IO.output("El nombre es: "+ getNombre());
-       IO.output("La facción es: "+ getFaccion());
-       IO.output("La cantidad de estrellas es: "+ getStars());
-       IO.output("El ataque es: "+ getAtk());
-       IO.output("La defensa es: "+ getDef());
-       IO.output("La fuerza vital es: "+ getHp());
-       IO.output("La velocidad es: "+ getSpd());
+    
+       IO.Output("El nombre es: "+ getNombre());
+       IO.Output("La facción es: "+ getFaccion());
+       IO.Output("El rango es: "+ getRango());
+       IO.Output("El ataque es: "+ getAtk());
+       IO.Output("La defensa es: "+ getDef());
+       IO.Output("La fuerza vital es: "+ getHp());
+       IO.Output("La velocidad es: "+ getSpd());
     }
     
     public String getNombre() {
@@ -159,12 +159,12 @@ public class Luchador {
         this.faccion = faccion;
     }
 
-    public int getStars() {
-        return this.stars;
+    public int getRango() {
+        return this.rango;
     }
 
-    public void setStars(int stars) {
-        this.stars = stars;
+    public void setRango(int rango) {
+        this.rango = rango;
     }
     
     public int getHp() {
