@@ -9,7 +9,7 @@ public class Monstruo {
     private int def;
     private int spd;
     private String faccion;
-    ObjetoEquipable obj1 = new ObjetoEquipable();
+    ObjetoEquipable obj1; 
     
     public Monstruo (){
         
@@ -18,20 +18,17 @@ public class Monstruo {
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1));
         this.spd = (ThreadLocalRandom.current().nextInt(10,100+1));
         this.faccion= ChosenFaction();
+        this.obj1 = new ObjetoEquipable();
     }
     
     private void ObjetoDropeable(){
-        obj1.ShowMejora();
+        this.obj1.ShowMejora();
     }
     
     private String ChosenFaction(){
         int opc=0;
         String faction="";
 
-        //IO.Output("Seleccione una facción");
-        //IO.Output("1.Fuego");
-        //IO.Output("2.Agua");
-        //IO.Output("3.Tierra");
         opc= ThreadLocalRandom.current().nextInt(1,3+1);
         
         switch(opc){
@@ -46,7 +43,7 @@ public class Monstruo {
         IO.Output("");
         return faction;
     }
-    public void showInfo(){
+    public void ShowInfo(){
  
        IO.Output("El ataque es: "+ getAtk());
        IO.Output("La defensa es: "+ getDef());

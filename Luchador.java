@@ -28,23 +28,7 @@ public class Luchador {
     private String ChosenName(){
         int opc=0;
         String name="";
-        
-        //IO.Output("Seleccione un nombre");
-        //IO.Output("1.Manjarsh");
-        //IO.Output("2.Zafrada");
-        //IO.Output("3.Vidal");
-        //IO.Output("4.Junior Playboy");
-        //IO.Output("5.Laarson");
-        //IO.Output("6.Tío Emilio");
-        //IO.Output("7.Alexis");
-        //IO.Output("8.Salfate");
-        //IO.Output("9.Pedro Angel");
-        //IO.Output("10.Profesor Rosa");
-        //IO.Output("11.Guru Guru");
-        //IO.Output("12.Censista");
-        //IO.Output("13.Pastor Soto");
-        //IO.Output("14.Kramer");
-        //IO.Output("15.Julio Cesar");
+
         opc= ThreadLocalRandom.current().nextInt(1,15+1);
         
             switch(opc){
@@ -89,10 +73,6 @@ public class Luchador {
         int opc=0;
         String faction="";
 
-        //IO.Output("Seleccione una facción");
-        //IO.Output("1.Fuego");
-        //IO.Output("2.Agua");
-        //IO.Output("3.Tierra");
         opc= ThreadLocalRandom.current().nextInt(1,3+1);
         
         switch(opc){
@@ -132,7 +112,7 @@ public class Luchador {
         return estrellas;
     }
 
-    public void showInfo(){
+    public void ShowInfo(){
     
        IO.Output("El nombre es: "+ getNombre());
        IO.Output("La facción es: "+ getFaccion());

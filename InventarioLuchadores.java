@@ -9,14 +9,14 @@ public class InventarioLuchadores{
     private int cantMax=25;
     
     private int VerCantLuchadores(){
-        return luchadores.size();    
+        return this.luchadores.size();    
     }
     
     private void AgregarLuchadores(){
-        Luchador L1 = new Luchador();
+        Luchador l1 = new Luchador();
         
-        if(luchadores.size()<=cantMax){
-            luchadores.add(L1);
+        if(this.luchadores.size()<=cantMax){
+            this.luchadores.add(l1);
         }
         else{
             IO.Output("Inventario lleno");
@@ -27,9 +27,9 @@ public class InventarioLuchadores{
     private void BuscarLuchadoresFaccion(String faccion) {
         int i;
         
-        for(i=0; i<luchadores.size();i++){
-            if(luchadores.get(i).getFaccion().equals(faccion)){
-            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+        for(i=0; i<this.luchadores.size();i++){
+            if(this.luchadores.get(i).getFaccion().equals(faccion)){
+                IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
             }
         }
     }
@@ -37,9 +37,9 @@ public class InventarioLuchadores{
     private void BuscarLuchadoresRango(int rango) {
         int i;
         
-        for(i=0; i<luchadores.size();i++){
-            if(luchadores.get(i).getRango() == rango){
-            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+        for(i=0; i<this.luchadores.size();i++){
+            if(this.luchadores.get(i).getRango() == rango){
+                IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
             }
         }  
     }
@@ -53,7 +53,7 @@ public class InventarioLuchadores{
         IO.Output("2. Filtrar por Rango");
         opc = IO.LeerInt();
         
-            if(opc>0 && opc<2){
+            if(opc>0 && opc<3){
                 String entrada="";
             
                 switch(opc){
@@ -83,16 +83,16 @@ public class InventarioLuchadores{
         IO.Output("Seleccione el numero del luchador a eliminar");
         opc = IO.LeerInt()-1;
         }
-        while(opc>-1 && opc<luchadores.size()-1);
-            luchadores.remove(opc);
+        while(opc>-1 && opc<this.luchadores.size()-1);
+            this.luchadores.remove(opc);
     }
     
     private void MostrarAllLuchadores(){
-        for(int x=0;x<luchadores.size();x++) {
+        for(int x=0;x<this.luchadores.size();x++) {
             IO.Output((x+1)+".");
-            IO.Output("Nombre: "+luchadores.get(x).getNombre());
-            IO.Output("Facción: "+luchadores.get(x).getFaccion());
-            IO.Output("Rango: "+ luchadores.get(x).getRango());
+            IO.Output("Nombre: "+ this.luchadores.get(x).getNombre());
+            IO.Output("Facción: "+ this.luchadores.get(x).getFaccion());
+            IO.Output("Rango: "+ this.luchadores.get(x).getRango());
         }
     }
     
@@ -104,15 +104,15 @@ public class InventarioLuchadores{
             MostrarAllLuchadores();
             opc= IO.LeerInt()-1;
             
-            if(opc>-1 && opc<luchadores.size()-1){
-                luchadores.get(opc).showInfo();
+            if(opc>-1 && opc<this.luchadores.size()-1){
+                this.luchadores.get(opc).ShowInfo();
             }
             else{
                 IO.Output("Error, opción no válida");
             }
             
         }
-        while(opc>0 && opc<luchadores.size());
+        while(opc>0 && opc<this.luchadores.size());
     }
  
 
