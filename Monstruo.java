@@ -1,15 +1,16 @@
 package proyectoayudantia;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Monstruo {
     
-    private int hp;
-    private int atk;
-    private int def;
-    private int spd;
+    private double hp;
+    private double atk;
+    private double def;
+    private double spd;
     private String faccion;
-    ObjetoEquipable obj1; 
+    private ArrayList<ObjetoEquipable> objetos; 
     
     public Monstruo (){
         
@@ -18,11 +19,33 @@ public class Monstruo {
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1));
         this.spd = (ThreadLocalRandom.current().nextInt(10,100+1));
         this.faccion= ChosenFaction();
-        this.obj1 = new ObjetoEquipable();
+        CrearObjetos();
     }
     
-    private void ObjetoDropeable(){
-        this.obj1.ShowMejora();
+    private void CrearObjetos(){
+        ObjetoEquipable obj1 = new ObjetoEquipable(1);
+        ObjetoEquipable obj2 = new ObjetoEquipable(3);
+        ObjetoEquipable obj3 = new ObjetoEquipable(5);
+        objetos.add(obj1);
+        objetos.add(obj2);
+        objetos.add(obj3); 
+    }
+    
+    private ObjetoEquipable DropearObjetos(){
+        int probabilidad= ThreadLocalRandom.current().nextInt(1,100+1);
+        int pos=-1;
+        
+        if (probabilidad<=60){
+            pos = 0;
+        }
+        if (probabilidad>60 && probabilidad<=90){
+            pos = 1;
+        }
+        if (probabilidad>90 && probabilidad<=100){
+            pos = 2;
+        } 
+
+        return objetos.get(pos);
     }
     
     private String ChosenFaction(){
@@ -51,6 +74,13 @@ public class Monstruo {
        IO.Output("La velocidad es: "+ getSpd());
        IO.Output("La facción es: "+ getFaccion());
     }
+    
+    public void ShowObjetos(){
+       for(int x=0;x<this.objetos.size();x++) {
+            IO.Output((x+1)+".");
+            this.objetos.get(x).ShowMejora();
+        }
+    }
 
     public void setFaccion(String faccion) {
         this.faccion = faccion;
@@ -60,35 +90,35 @@ public class Monstruo {
         return this.faccion;
     }
     
-    public int getHp() {
+    public double getHp() {
         return this.hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
     }
 
-    public int getAtk() {
+    public double getAtk() {
         return this.atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(double atk) {
         this.atk = atk;
     }
 
-    public int getDef() {
+    public double getDef() {
         return this.def;
     }
 
-    public void setDef(int def) {
+    public void setDef(double def) {
         this.def = def;
     }
 
-    public int getSpd() {
+    public double getSpd() {
         return this.spd;
     }
 
-    public void setSpd(int spd) {
+    public void setSpd(double spd) {
         this.spd = spd;
     }
     

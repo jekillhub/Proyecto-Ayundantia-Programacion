@@ -7,6 +7,7 @@ public class InventarioLuchadores{
     
     private ArrayList<Luchador> luchadores;
     private int cantMax=25;
+    private ArrayList<Luchador> luchadoresSeleccionados;
     
     private int VerCantLuchadores(){
         return this.luchadores.size();    
@@ -114,6 +115,27 @@ public class InventarioLuchadores{
         }
         while(opc>0 && opc<this.luchadores.size());
     }
- 
 
+//METODO EXPERIMENTAL
+//    
+    //private void SeleccionarLuchadores(){
+        //int opc = 0;
+        //int respuesta= 0;
+        //MostrarAllLuchadores();
+        //
+        //do{
+            //do{
+                //IO.Output("Seleccione el numero de algun luchador: ");
+                //opc = IO.LeerInt()-1;
+            //}while(opc<0 || opc>luchadores.size());
+            //this.luchadoresSeleccionados.add(this.luchadores.get(opc));
+            //
+            //do{
+            //IO.Output("¿Desea seleccionar otro luchador?");
+            //IO.Output("1. Si");
+            //IO.Output("2. No");
+            //respuesta = IO.LeerInt();
+            //}while(respuesta<1 || respuesta>2);
+        //}while(respuesta!=2);
+    //}
 }

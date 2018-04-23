@@ -9,10 +9,14 @@ public class ObjetoEquipable {
     private int rango;
     
     public ObjetoEquipable() {
-        GeneradorMejoraTotal();
+        GeneradorMejoraTotalA();
         GeneradorCaracteristica();
     }
     
+    public ObjetoEquipable(int rango){
+        GeneradorMejoraTotalB(rango);
+        GeneradorCaracteristica();
+    }
     
     private void GeneradorCaracteristica(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
@@ -72,9 +76,14 @@ public class ObjetoEquipable {
         }
     }
 
-    private void GeneradorMejoraTotal(){
+    private void GeneradorMejoraTotalA(){
         GeneradorRango();
         setMejoraTotal(MejoraBase()*getRango());   
+    }
+    
+    private void GeneradorMejoraTotalB(int rango){
+        setRango(rango);
+        setMejoraTotal(MejoraBase()*rango);   
     }
     
     public void ShowMejora(){

@@ -8,17 +8,19 @@ public class Luchador {
     private String nombre;
     private String faccion;
     private int rango;
-    private int hp;
-    private int atk;
-    private int def;
-    private int spd;
+    private double hp;
+    private double atk;
+    private double def;
+    private double spd;
+    private ObjetoEquipable objEq;
+    private double statSinObj;
     
     
     public Luchador (){
         
         this.nombre = ChosenName();
         this.faccion = ChosenFaction();
-        this.rango = GeneratorRango();
+        this.rango = GeneratorStars();
         this.hp = (ThreadLocalRandom.current().nextInt(200,500+1))*this.rango;
         this.atk = (ThreadLocalRandom.current().nextInt(20,70+1))*this.rango;
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1))*this.rango;
@@ -64,7 +66,6 @@ public class Luchador {
                          break;
             }
         
-        IO.Output("");
         return name;
         
     }
@@ -80,15 +81,14 @@ public class Luchador {
                      break;
             case 2:  faction = "Agua";
                      break;
-            case 3:  faction = "Tierra";
+            case 3:  faction = "Planta";
                      break;
             } 
         
-        IO.Output("");
         return faction;
     }
     
-    private int GeneratorRango(){
+    private int GeneratorStars(){
         
         int probabilidad = ThreadLocalRandom.current().nextInt(1,100+1);
         int estrellas = 0;
@@ -123,6 +123,35 @@ public class Luchador {
        IO.Output("La velocidad es: "+ getSpd());
     }
     
+    private void EquiparObjeto(ObjetoEquipable obj1){
+        this.objEq = obj1;
+        IO.Output("Has equipado "+this.objEq.getCaracteristica());
+        
+        if (this.objEq.getCaracteristica()=="Armadura"){
+            this.statSinObj = this.hp;
+            this.hp= this.hp + this.objEq.getMejoraTotal();
+        }
+        
+        if (this.objEq.getCaracteristica()=="Arma"){
+            this.statSinObj = this.atk;
+            this.atk= this.atk + this.objEq.getMejoraTotal();
+        }
+        
+        if (this.objEq.getCaracteristica()=="Escudo"){
+            this.statSinObj = this.def;
+            this.def= this.def + this.objEq.getMejoraTotal();
+        }
+        
+        if (this.objEq.getCaracteristica()=="Botas"){
+            this.statSinObj = this.spd;
+            this.spd= this.spd + this.objEq.getMejoraTotal();
+        }
+    }
+    
+    private void DesequiparObjeto(){
+
+    }
+    
     public String getNombre() {
         return this.nombre;
     }
@@ -147,35 +176,35 @@ public class Luchador {
         this.rango = rango;
     }
     
-    public int getHp() {
+    public double getHp() {
         return this.hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
     }
 
-    public int getAtk() {
+    public double getAtk() {
         return this.atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(double atk) {
         this.atk = atk;
     }
 
-    public int getDef() {
+    public double getDef() {
         return this.def;
     }
 
-    public void setDef(int def) {
+    public void setDef(double def) {
         this.def = def;
     }
 
-    public int getSpd() {
+    public double getSpd() {
         return this.spd;
     }
 
-    public void setSpd(int spd) {
+    public void setSpd(double spd) {
         this.spd = spd;
     }
     
