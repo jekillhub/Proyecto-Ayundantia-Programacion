@@ -31,7 +31,7 @@ public class Monstruo {
         objetos.add(obj3); 
     }
     
-    private ObjetoEquipable DropearObjetos(){
+    public ObjetoEquipable DropearObjetos(){
         int probabilidad= ThreadLocalRandom.current().nextInt(1,100+1);
         int pos=-1;
         
@@ -66,6 +66,7 @@ public class Monstruo {
         IO.Output("");
         return faction;
     }
+    
     public void ShowInfo(){
        IO.Output("Información del Monstruo: ");
        IO.Output("El ataque es: "+ getAtk());
