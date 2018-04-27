@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class InventarioObjetos{
 
     
-    private ArrayList<ObjetoEquipable> objetos;
+    private ArrayList<ObjetoEquipable> objetos= new ArrayList();
     private int cantMax=10;
-    
+
+    public InventarioObjetos() {
+    }
     
     private void MostrarAllObjetos(){
         for(int x=0;x<this.objetos.size();x++) {
@@ -19,7 +21,7 @@ public class InventarioObjetos{
         }
     }
     
-    private int VerCantObjetos(){
+    private int ObtCantObjetos(){
         return this.objetos.size();    
     }
     
@@ -51,7 +53,10 @@ public class InventarioObjetos{
         
         for(i=0; i<this.objetos.size();i++){
             if(this.objetos.get(i).getRango() == rango){
-            IO.Output("El luchador numero "+(i-1)+" corresponde a la busqueda");  
+                IO.Output("El luchador numero "+(i+1)+" corresponde a la busqueda");  
+            }
+            else{
+                IO.Output("El luchador no se encuentra en el inventario");
             }
         }  
     }

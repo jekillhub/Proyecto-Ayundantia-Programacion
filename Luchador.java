@@ -121,9 +121,11 @@ public class Luchador {
        IO.Output("La defensa es: "+ getDef());
        IO.Output("La fuerza vital es: "+ getHp());
        IO.Output("La velocidad es: "+ getSpd());
+       IO.Output("");
     }
     
-    private void EquiparObjeto(ObjetoEquipable obj1){
+    public void EquiparObjeto(ObjetoEquipable obj1){
+        
         this.objEq = obj1;
         IO.Output("Has equipado "+this.objEq.getCaracteristica());
         
@@ -146,10 +148,30 @@ public class Luchador {
             this.statSinObj = this.spd;
             this.spd= this.spd + this.objEq.getMejoraTotal();
         }
+        IO.Output("");
     }
     
-    private void DesequiparObjeto(){
-
+    public void DesequiparObjeto(){
+        
+        if (this.objEq.getCaracteristica()=="Armadura"){
+            this.hp= this.statSinObj;
+        }
+        
+        if (this.objEq.getCaracteristica()=="Arma"){
+            this.atk= this.statSinObj;
+        }
+        
+        if (this.objEq.getCaracteristica()=="Escudo"){
+            this.def= this.statSinObj;
+        }
+        
+        if (this.objEq.getCaracteristica()=="Botas"){
+            this.spd= this.statSinObj;
+        }
+        
+        IO.Output("Has desequipado "+this.objEq.getCaracteristica());
+        IO.Output("");
+        
     }
     
     public String getNombre() {

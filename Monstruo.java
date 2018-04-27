@@ -10,7 +10,7 @@ public class Monstruo {
     private double def;
     private double spd;
     private String faccion;
-    private ArrayList<ObjetoEquipable> objetos; 
+    private ArrayList<ObjetoEquipable> objetos = new ArrayList(); 
     
     public Monstruo (){
         
@@ -44,7 +44,7 @@ public class Monstruo {
         if (probabilidad>90 && probabilidad<=100){
             pos = 2;
         } 
-
+        
         return objetos.get(pos);
     }
     
@@ -67,19 +67,22 @@ public class Monstruo {
         return faction;
     }
     public void ShowInfo(){
- 
+       IO.Output("Información del Monstruo: ");
        IO.Output("El ataque es: "+ getAtk());
        IO.Output("La defensa es: "+ getDef());
        IO.Output("La fuerza vital es: "+ getHp());
        IO.Output("La velocidad es: "+ getSpd());
        IO.Output("La facción es: "+ getFaccion());
+       IO.Output("");
     }
     
     public void ShowObjetos(){
-       for(int x=0;x<this.objetos.size();x++) {
+        IO.Output("Los Objetos del Monstruo son: ");
+        for(int x=0;x<this.objetos.size();x++) {
             IO.Output((x+1)+".");
             this.objetos.get(x).ShowMejora();
         }
+        IO.Output("");
     }
 
     public void setFaccion(String faccion) {

@@ -17,7 +17,7 @@ public class ObjetoEquipable {
         GeneradorMejoraTotalB(rango);
         GeneradorCaracteristica();
     }
-    
+        
     private void GeneradorCaracteristica(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
         

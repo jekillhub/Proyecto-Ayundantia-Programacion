@@ -1,5 +1,6 @@
 package proyectoayudantia;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Batalla {
@@ -42,6 +43,7 @@ public class Batalla {
         }
         
         else{
+            this.dañoDados = 0;
             IO.Output("No hay aumento del daño");
         }
 
