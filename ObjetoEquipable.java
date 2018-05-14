@@ -9,16 +9,16 @@ public class ObjetoEquipable {
     private int rango;
     
     public ObjetoEquipable() {
-        GeneradorMejoraTotalA();
-        GeneradorCaracteristica();
+        generadorMejoraTotalA();
+        generadorCaracteristica();
     }
     
     public ObjetoEquipable(int rango){
-        GeneradorMejoraTotalB(rango);
-        GeneradorCaracteristica();
+        generadorMejoraTotalB(rango);
+        generadorCaracteristica();
     }
         
-    private void GeneradorCaracteristica(){
+    private void generadorCaracteristica(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
         
         if(posibilidad==1){
@@ -36,12 +36,12 @@ public class ObjetoEquipable {
     
     }
 
-    private int MejoraBase(){
+    private int mejoraBase(){
         int base = ThreadLocalRandom.current().nextInt(1,9+1);
         return base;  
     }
     
-    private void GeneradorRango(){
+    private void generadorRango(){
         int posibilidad = ThreadLocalRandom.current().nextInt(1,100+1);
         
         if(posibilidad<=20){
@@ -76,18 +76,18 @@ public class ObjetoEquipable {
         }
     }
 
-    private void GeneradorMejoraTotalA(){
-        GeneradorRango();
-        setMejoraTotal(MejoraBase()*getRango());   
+    private void generadorMejoraTotalA(){
+        generadorRango();
+        setMejoraTotal(mejoraBase()*getRango());   
     }
     
-    private void GeneradorMejoraTotalB(int rango){
+    private void generadorMejoraTotalB(int rango){
         setRango(rango);
-        setMejoraTotal(MejoraBase()*rango);   
+        setMejoraTotal(mejoraBase()*rango);   
     }
     
     public void ShowMejora(){
-        IO.Output("La mejora del objeto equipable es de: "+getMejoraTotal());
+        IO.output("La mejora del objeto equipable es de: "+getMejoraTotal());
     }
 
     public int getMejoraTotal() {

@@ -17,39 +17,39 @@ public class Batalla {
         cantMonstruos = 1;
     }
 
-    private int Dado6Caras(){
+    private int dado6Caras(){
         return (ThreadLocalRandom.current().nextInt(1,6+1));
     }
     
-    private int Dado8Caras(){
+    private int dado8Caras(){
         return (ThreadLocalRandom.current().nextInt(1,8+1));
     }
     
-    private int RestaDados(){
-        return Dado8Caras()-Dado6Caras();
+    private int restaDados(){
+        return dado8Caras() - dado6Caras();
     }
     
     private void CalculoDañoDados(){
-        int restaDados = RestaDados();
+        int restaDados = restaDados();
         
         if (restaDados>1){
             this.dañoDados = 2*restaDados;
-            IO.Output("El daño será: "+ this.dañoDados);
+            IO.output("El daño será: "+ this.dañoDados);
         }
         
         if (restaDados<1){
             this.dañoDados = Math.abs(restaDados);
-            IO.Output("El daño será: "+ this.dañoDados);
+            IO.output("El daño será: "+ this.dañoDados);
         }
         
         else{
             this.dañoDados = 0;
-            IO.Output("No hay aumento del daño");
+            IO.output("No hay aumento del daño");
         }
 
     }
     
-    private void EvaluacionFacciones(Luchador l1, Monstruo m1){
+    private void evaluacionFacciones(Luchador l1, Monstruo m1){
             
             if (l1.getFaccion() == "Agua" && m1.getFaccion() == "Fuego"){
                 l1.setAtk(l1.getAtk()*1.5);
@@ -82,7 +82,7 @@ public class Batalla {
     
 //Esta parte la entendi de esta manera, no se si se ajusta a lo pedido.
     
-    private double CalculoDañoLM(Luchador atacante, Monstruo atacado){
+    private double calculoDañoLM(Luchador atacante, Monstruo atacado){
         double daño = atacado.getAtk() - atacado.getDef();
         if (daño<0){
             daño = 0;
@@ -90,7 +90,7 @@ public class Batalla {
         return daño;
     }
     
-    private double CalculoDañoML(Monstruo atacante, Luchador atacado){
+    private double calculoDañoML(Monstruo atacante, Luchador atacado){
         double daño = atacado.getAtk() - atacado.getDef();
         if (daño<0){
             daño = 0;

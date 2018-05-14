@@ -18,16 +18,16 @@ public class Luchador {
     
     public Luchador (){
         
-        this.nombre = ChosenName();
-        this.faccion = ChosenFaction();
-        this.rango = GeneratorStars();
+        this.nombre = chosenName();
+        this.faccion = chosenFaction();
+        this.rango = generatorStars();
         this.hp = (ThreadLocalRandom.current().nextInt(200,500+1))*this.rango;
         this.atk = (ThreadLocalRandom.current().nextInt(20,70+1))*this.rango;
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1))*this.rango;
         this.spd = (ThreadLocalRandom.current().nextInt(10,100+1))*this.rango;
     }
     
-    private String ChosenName(){
+    private String chosenName(){
         int opc=0;
         String name="";
 
@@ -70,7 +70,7 @@ public class Luchador {
         
     }
     
-    private String ChosenFaction(){
+    private String chosenFaction(){
         int opc=0;
         String faction="";
 
@@ -88,7 +88,7 @@ public class Luchador {
         return faction;
     }
     
-    private int GeneratorStars(){
+    private int generatorStars(){
         
         int probabilidad = ThreadLocalRandom.current().nextInt(1,100+1);
         int estrellas = 0;
@@ -112,22 +112,22 @@ public class Luchador {
         return estrellas;
     }
 
-    public void ShowInfo(){
+    public void showInfo(){
     
-       IO.Output("El nombre es: "+ getNombre());
-       IO.Output("La facción es: "+ getFaccion());
-       IO.Output("El rango es: "+ getRango());
-       IO.Output("El ataque es: "+ getAtk());
-       IO.Output("La defensa es: "+ getDef());
-       IO.Output("La fuerza vital es: "+ getHp());
-       IO.Output("La velocidad es: "+ getSpd());
-       IO.Output("");
+       IO.output("El nombre es: "+ getNombre());
+       IO.output("La facción es: "+ getFaccion());
+       IO.output("El rango es: "+ getRango());
+       IO.output("El ataque es: "+ getAtk());
+       IO.output("La defensa es: "+ getDef());
+       IO.output("La fuerza vital es: "+ getHp());
+       IO.output("La velocidad es: "+ getSpd());
+       IO.output("");
     }
     
-    public void EquiparObjeto(ObjetoEquipable obj1){
+    public void equiparObjeto(ObjetoEquipable obj1){
         
         this.objEq = obj1;
-        IO.Output("Has equipado "+this.objEq.getCaracteristica());
+        IO.output("Has equipado "+this.objEq.getCaracteristica());
         
         if (this.objEq.getCaracteristica()=="Armadura"){
             this.statSinObj = this.hp;
@@ -148,10 +148,10 @@ public class Luchador {
             this.statSinObj = this.spd;
             this.spd= this.spd + this.objEq.getMejoraTotal();
         }
-        IO.Output("");
+        IO.output("");
     }
     
-    public void DesequiparObjeto(){
+    public void desequiparObjeto(){
         
         if (this.objEq.getCaracteristica()=="Armadura"){
             this.hp= this.statSinObj;
@@ -169,8 +169,8 @@ public class Luchador {
             this.spd= this.statSinObj;
         }
         
-        IO.Output("Has desequipado "+this.objEq.getCaracteristica());
-        IO.Output("");
+        IO.output("Has desequipado "+this.objEq.getCaracteristica());
+        IO.output("");
         
     }
     
@@ -230,5 +230,8 @@ public class Luchador {
         this.spd = spd;
     }
     
+    public ObjetoEquipable getObjetoEq() {
+        return this.objEq;
+    }
 
 }

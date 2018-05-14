@@ -10,7 +10,7 @@ public class Monstruo {
     private double def;
     private double spd;
     private String faccion;
-    private ArrayList<ObjetoEquipable> objetos = new ArrayList(); 
+    private ArrayList<ObjetoEquipable> objetos;
     
     public Monstruo (){
         
@@ -18,11 +18,12 @@ public class Monstruo {
         this.atk = (ThreadLocalRandom.current().nextInt(1000,1500+1));
         this.def = (ThreadLocalRandom.current().nextInt(5,25+1));
         this.spd = (ThreadLocalRandom.current().nextInt(10,100+1));
-        this.faccion= ChosenFaction();
-        CrearObjetos();
+        this.faccion= chosenFaction();
+        this.objetos = new ArrayList();
+        crearObjetos();
     }
     
-    private void CrearObjetos(){
+    private void crearObjetos(){
         ObjetoEquipable obj1 = new ObjetoEquipable(1);
         ObjetoEquipable obj2 = new ObjetoEquipable(3);
         ObjetoEquipable obj3 = new ObjetoEquipable(5);
@@ -31,7 +32,7 @@ public class Monstruo {
         objetos.add(obj3); 
     }
     
-    public ObjetoEquipable DropearObjetos(){
+    public ObjetoEquipable dropearObjetos(){
         int probabilidad= ThreadLocalRandom.current().nextInt(1,100+1);
         int pos=-1;
         
@@ -48,7 +49,7 @@ public class Monstruo {
         return objetos.get(pos);
     }
     
-    private String ChosenFaction(){
+    private String chosenFaction(){
         int opc=0;
         String faction="";
 
@@ -63,27 +64,27 @@ public class Monstruo {
                      break;
             } 
         
-        IO.Output("");
+        IO.output("");
         return faction;
     }
     
-    public void ShowInfo(){
-       IO.Output("Información del Monstruo: ");
-       IO.Output("El ataque es: "+ getAtk());
-       IO.Output("La defensa es: "+ getDef());
-       IO.Output("La fuerza vital es: "+ getHp());
-       IO.Output("La velocidad es: "+ getSpd());
-       IO.Output("La facción es: "+ getFaccion());
-       IO.Output("");
+    public void showInfo(){
+       IO.output("Información del Monstruo: ");
+       IO.output("El ataque es: "+ getAtk());
+       IO.output("La defensa es: "+ getDef());
+       IO.output("La fuerza vital es: "+ getHp());
+       IO.output("La velocidad es: "+ getSpd());
+       IO.output("La facción es: "+ getFaccion());
+       IO.output("");
     }
     
-    public void ShowObjetos(){
-        IO.Output("Los Objetos del Monstruo son: ");
+    public void showObjetos(){
+        IO.output("Los Objetos del Monstruo son: ");
         for(int x=0;x<this.objetos.size();x++) {
-            IO.Output((x+1)+".");
+            IO.output((x+1)+".");
             this.objetos.get(x).ShowMejora();
         }
-        IO.Output("");
+        IO.output("");
     }
 
     public void setFaccion(String faccion) {
