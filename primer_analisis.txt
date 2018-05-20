@@ -1,20 +1,20 @@
 Relaciones entre Luchador e InventarioLuchadores:
 
-1.1. Al agregar luchadores al ArrayList "luchadores" se requiere llamar al constructor de Luchador.
+1.1. Al agregar luchadores al ArrayList "luchadores" (este ArrayList es un atributo de relación) se requiere llamar al constructor de Luchador.
 1.2. Al filtar luchadores (sea faccion o rango) se requiere llamar getters de los atributoa en la clase Luchador.
 1.3. Al mostrar caracteristicas de luchadores (de todos o de uno en particular) se requiere llamar getters de los atributos en la clase Luchador.
 1.4. Al eliminar luchadores también hay una relación dado que, dentro del metodo se llama a MostrarAllLuchadores() a fin de poder visualizar lo que hay para eliminar.
 
 Relaciones entre ObjetoEquipable e InventarioObjetos:
 
-2.1. Al agregar objetosEquipables al ArrayList "objetos" se requiere llamar al constructor de ObjetoEquipable.
+2.1. Al agregar objetosEquipables al ArrayList "objetos" (este ArrayList es un atributo de relación) se requiere llamar al constructor de ObjetoEquipable.
 2.2. Al mostrar caracteristicas de objetos (de todos o de uno en particular) se requiere llamar getters de los atributos en la clase ObjetoEquipable.
 2.3. Al filtar objetos por rango, se requiere llamar getters de los atributoa en la clase ObjetoEquipable.
 2.4. Al eliminar objetos también hay una relación dado que, dentro del metodo se llama a MostrarAllObjetos() a fin de poder visualizar lo que hay para eliminar.
 
 Relaciones entre Monstruo y ObjetoEquipable:
 
-3.1. Al crear un ObjetoEquipable, dado que según el instructivo del juego el Monstruo cuenta con uno, y al mostrar sus caracteristicas ObjetoDropeable().
+3.1. Al crear un ObjetoEquipable, dado que según el instructivo del juego el Monstruo cuenta con uno (atributo de relación), y al mostrar sus caracteristicas ObjetoDropeable().
 
 Relaciones entre IO y las demás clases:
 
