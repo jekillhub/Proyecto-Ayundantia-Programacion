@@ -2,7 +2,7 @@ package proyectoayudantia;
 
 import java.util.ArrayList;
 
-public class InventarioObjetos {
+public class InventarioObjetos extends Inventario {
 
     private ArrayList<ObjetoEquipable> objetos;
     private int cantMax;
@@ -12,7 +12,7 @@ public class InventarioObjetos {
         this.cantMax = 10;
     }
 
-    private void mostrarAllObjetos() {
+    private void mostrarAll() {
         for (int x = 0; x < this.objetos.size(); x++) {
             IO.output((x + 1) + ".");
             IO.output("Caracteristica: " + this.objetos.get(x).getCaracteristica());
@@ -20,33 +20,33 @@ public class InventarioObjetos {
             IO.output("Mejora Total: " + this.objetos.get(x).getMejoraTotal());
         }
     }
-
-    private void obtenerCantObjetos() {
+    
+    private void verCantidad() {
         IO.output("Actualmente hay " + this.objetos.size() + " objetos en el inventario");
     }
 
-    private void agregarObjetos() {
+    private void agregar() {
         ObjetoEquipable obj1 = new ObjetoEquipable();
 
-        if (this.objetos.size() <= cantMax) {
+        if (this.objetos.size() <= this.cantMax) {
             this.objetos.add(obj1);
         } else {
             IO.output("Inventario lleno");
         }
     }
 
-    private void quitarObjetos() {
+    private void quitar() {
         int opc = 0;
 
         do {
-            mostrarAllObjetos();
+            mostrarAll();
             IO.output("Seleccione el numero del luchador a eliminar");
             opc = IO.leerInt() - 1;
         } while (opc > -1 && opc < this.objetos.size() - 1);
         this.objetos.remove(opc);
     }
 
-    private void buscarLuchadoresRango(int rango) {
+    private void buscarRango(int rango) {
         int i;
 
         for (i = 0; i < this.objetos.size(); i++) {
@@ -58,16 +58,15 @@ public class InventarioObjetos {
         }
     }
 
-    private void filtrarRango() {
+    private void filtrar() {
         int opc = 0;
         IO.output("¿Que tipo de rango desea encontrar?");
         String entrada = IO.leerString();
-        buscarLuchadoresRango(IO.convertToInt(entrada));
+        buscarRango(IO.convertToInt(entrada));
     }
 
-    //NUEVO 
     private void equiparObjeto(Luchador l1) {
-        mostrarAllObjetos();
+        mostrarAll();
         int opc = 0;
 
         do {

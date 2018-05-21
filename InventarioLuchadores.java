@@ -2,7 +2,7 @@ package proyectoayudantia;
 
 import java.util.ArrayList;
 
-public class InventarioLuchadores {
+public class InventarioLuchadores extends Inventario {
 
     private ArrayList<Luchador> luchadores;
     private ArrayList<Luchador> seleccionados;
@@ -11,24 +11,24 @@ public class InventarioLuchadores {
     public InventarioLuchadores() {
         this.luchadores = new ArrayList();
         this.cantMax = 25;
-        agregarLuchadores();
+        agregar();
     }
 
-    public int obtenerCantLuchadores() {
-        return this.luchadores.size();
+    public void verCantidad() {
+        IO.output("Actualmente hay " + this.luchadores.size() + " luchadores en el inventario");
     }
 
-    public void agregarLuchadores() {
+    public void agregar() {
         Luchador l1 = new Luchador();
 
-        if (this.luchadores.size() <= cantMax) {
+        if (this.luchadores.size() <= this.cantMax) {
             this.luchadores.add(l1);
         } else {
             IO.output("Inventario lleno");
         }
     }
 
-    private void buscarLuchadoresFaccion(String faccion) {
+    private void buscarFaccion(String faccion) {
         int i;
 
         for (i = 0; i < this.luchadores.size(); i++) {
@@ -38,7 +38,7 @@ public class InventarioLuchadores {
         }
     }
 
-    private void buscarLuchadoresRango(int rango) {
+    private void buscarRango(int rango) {
         int i;
 
         for (i = 0; i < this.luchadores.size(); i++) {
@@ -64,19 +64,19 @@ public class InventarioLuchadores {
             case 1:
                 IO.output("¿Que tipo de facción desea encontrar?");
                 entrada = IO.leerString();
-                buscarLuchadoresFaccion(entrada);
+                buscarFaccion(entrada);
                 break;
             case 2:
                 IO.output("¿Que tipo de rango desea encontrar?");
                 entrada = IO.leerString();
-                buscarLuchadoresRango(IO.convertToInt(entrada));
+                buscarRango(IO.convertToInt(entrada));
                 break;
         }
     }
 
-    public void quitarLuchadores() {
+    public void quitar() {
         int opc = 0;
-        mostrarAllLuchadores();
+        mostrarAll();
 
         do {
             IO.output("Seleccione el numero del luchador a eliminar");
@@ -87,7 +87,7 @@ public class InventarioLuchadores {
         this.luchadores.remove(opc);
     }
 
-    public void mostrarAllLuchadores() {
+    public void mostrarAll() {
         IO.output("Luchadores Disponibles: ");
         for (int x = 0; x < this.luchadores.size(); x++) {
             IO.output((x + 1) + ".");
@@ -99,11 +99,11 @@ public class InventarioLuchadores {
         IO.output("");
     }
 
-    public void mostrarSpecificLuchador() {
+    public void mostrarSpecific() {
         int opc = 0;
 
         do {
-            mostrarAllLuchadores();
+            mostrarAll();
             IO.output("Seleccione el numero de algún luchador para mostrar toda su información");
             opc = IO.leerInt() - 1;
 
@@ -117,7 +117,7 @@ public class InventarioLuchadores {
         int opc = 0;
 
         do {
-            mostrarAllLuchadores();
+            mostrarAll();
             IO.output("Seleccione el numero de algún luchador para enviarlo a combatir");
             opc = IO.leerInt() - 1;
 

@@ -1,0 +1,4 @@
+Se crearon dos superclases, Personaje e Inventario.
+
+1. Luchador y Monstruo tienen atributos comunes (faccion, hp, atk, def y spd) y metodos comunes (chosenFaction y showInfo)
+2. InventarioLuchadores y InventarioObjetos tienen un atributo común (cantMax) y metodos comunes (verCantidad, agregar, quitar, mostrarAll, buscarRango y filtrar)
