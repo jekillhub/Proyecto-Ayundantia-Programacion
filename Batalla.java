@@ -128,17 +128,4 @@ public class Batalla {
             this.primerAtaque = 0;
         }
     }
-
-    public void mostrarLuchadores() {
-        System.out.println("Desordenados:");
-        for (int i = 0; i < this.luchadores.size(); i++) {
-            this.luchadores.get(i).showInfo();
-        }
-        System.out.println("Ordenados:");
-        ordenarAtaqueLuchadores();
-        for (int i = 0; i < this.luchadores.size(); i++) {
-            this.luchadores.get(i).showInfo();
-        }
-    }
-
 }
