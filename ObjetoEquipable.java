@@ -3,91 +3,91 @@ package proyectoayudantia;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ObjetoEquipable {
-    
+
     private int mejoraTotal;
     private String caracteristica;
     private int rango;
-    
+
     public ObjetoEquipable() {
         generadorMejoraTotalA();
         generadorCaracteristica();
     }
-    
-    public ObjetoEquipable(int rango){
+
+    public ObjetoEquipable(int rango) {
         generadorMejoraTotalB(rango);
         generadorCaracteristica();
     }
-        
-    private void generadorCaracteristica(){
-        int posibilidad = ThreadLocalRandom.current().nextInt(1,4+1);
-        
-        if(posibilidad==1){
+
+    private void generadorCaracteristica() {
+        int posibilidad = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+
+        if (posibilidad == 1) {
             setCaracteristica("Armadura");
         }
-        if(posibilidad==2){
+        if (posibilidad == 2) {
             setCaracteristica("Arma");
         }
-        if(posibilidad==3){
+        if (posibilidad == 3) {
             setCaracteristica("Escudo");
         }
-        if(posibilidad==4){
+        if (posibilidad == 4) {
             setCaracteristica("Botas");
         }
-    
+
     }
 
-    private int mejoraBase(){
-        int base = ThreadLocalRandom.current().nextInt(1,9+1);
-        return base;  
+    private int mejoraBase() {
+        int base = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+        return base;
     }
-    
-    private void generadorRango(){
-        int posibilidad = ThreadLocalRandom.current().nextInt(1,100+1);
-        
-        if(posibilidad<=20){
+
+    private void generadorRango() {
+        int posibilidad = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+
+        if (posibilidad <= 20) {
             setRango(1);
         }
-        if(posibilidad>20 && posibilidad<=40){
+        if (posibilidad > 20 && posibilidad <= 40) {
             setRango(2);
         }
-        if(posibilidad>40 && posibilidad<=60){
+        if (posibilidad > 40 && posibilidad <= 60) {
             setRango(3);
         }
-        if(posibilidad>60 && posibilidad<=75){
+        if (posibilidad > 60 && posibilidad <= 75) {
             setRango(4);
         }
-        if(posibilidad>75 && posibilidad<=85){
+        if (posibilidad > 75 && posibilidad <= 85) {
             setRango(5);
         }
-        if(posibilidad>85 && posibilidad<=90){
+        if (posibilidad > 85 && posibilidad <= 90) {
             setRango(6);
         }
-        if(posibilidad>90 && posibilidad<=94){
+        if (posibilidad > 90 && posibilidad <= 94) {
             setRango(7);
         }
-        if(posibilidad>94 && posibilidad<=97){
+        if (posibilidad > 94 && posibilidad <= 97) {
             setRango(8);
         }
-        if(posibilidad>97 && posibilidad<=99){
+        if (posibilidad > 97 && posibilidad <= 99) {
             setRango(9);
         }
-        if(posibilidad>99 && posibilidad<=100){
+        if (posibilidad > 99 && posibilidad <= 100) {
             setRango(10);
         }
     }
 
-    private void generadorMejoraTotalA(){
+    private void generadorMejoraTotalA() {
         generadorRango();
-        setMejoraTotal(mejoraBase()*getRango());   
+        setMejoraTotal(mejoraBase() * getRango());
     }
-    
-    private void generadorMejoraTotalB(int rango){
+
+    private void generadorMejoraTotalB(int rango) {
         setRango(rango);
-        setMejoraTotal(mejoraBase()*rango);   
+        setMejoraTotal(mejoraBase() * rango);
     }
-    
-    public void ShowMejora(){
-        IO.output("La mejora del objeto equipable es de: "+getMejoraTotal());
+
+    public void ShowMejora() {
+        IO.output("La mejora del objeto equipable es de: " + getMejoraTotal());
     }
 
     public int getMejoraTotal() {
@@ -105,7 +105,7 @@ public class ObjetoEquipable {
     public void setCaracteristica(String caracteristica) {
         this.caracteristica = caracteristica;
     }
-    
+
     public void setRango(int rango) {
         this.rango = rango;
     }
@@ -113,7 +113,5 @@ public class ObjetoEquipable {
     public int getRango() {
         return rango;
     }
-    
-    
-        
+
 }
