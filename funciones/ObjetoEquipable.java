@@ -1,4 +1,4 @@
-package proyectoayudantia;
+package com.mycompany.proyectoayudantiaprogra.funciones;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -9,16 +9,21 @@ public class ObjetoEquipable {
     private int rango;
 
     public ObjetoEquipable() {
+
         generadorMejoraTotalA();
         generadorCaracteristica();
+
     }
 
     public ObjetoEquipable(int rango) {
+
         generadorMejoraTotalB(rango);
         generadorCaracteristica();
+
     }
 
     private void generadorCaracteristica() {
+
         int posibilidad = ThreadLocalRandom.current().nextInt(1, 4 + 1);
 
         if (posibilidad == 1) {
@@ -37,11 +42,13 @@ public class ObjetoEquipable {
     }
 
     private int mejoraBase() {
-        int base = ThreadLocalRandom.current().nextInt(1, 9 + 1);
-        return base;
+
+        return ThreadLocalRandom.current().nextInt(1, 9 + 1);
+
     }
 
     private void generadorRango() {
+
         int posibilidad = ThreadLocalRandom.current().nextInt(1, 100 + 1);
 
         if (posibilidad <= 20) {
@@ -74,24 +81,33 @@ public class ObjetoEquipable {
         if (posibilidad > 99 && posibilidad <= 100) {
             setRango(10);
         }
+
     }
 
     private void generadorMejoraTotalA() {
+
         generadorRango();
-        setMejoraTotal(mejoraBase() * getRango());
+        this.mejoraTotal = (mejoraBase() * getRango());
+
     }
 
     private void generadorMejoraTotalB(int rango) {
-        setRango(rango);
-        setMejoraTotal(mejoraBase() * rango);
+
+        this.rango = (rango);
+        this.mejoraTotal = (mejoraBase() * rango);
+
     }
 
-    public void ShowMejora() {
-        IO.output("La mejora del objeto equipable es de: " + getMejoraTotal());
+    public String mostrarMejora() {
+
+        return "La mejora del objeto equipable es de: " + this.mejoraTotal;
+
     }
 
     public int getMejoraTotal() {
+
         return this.mejoraTotal;
+
     }
 
     public String getCaracteristica() {

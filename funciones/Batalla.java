@@ -1,4 +1,4 @@
-package proyectoayudantia;
+package com.mycompany.proyectoayudantiaprogra.funciones;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,38 +11,46 @@ public class Batalla {
     private int primerAtaque; // Si es 1 ataca el monstruo, si es 0 el luchador mas rapido.
 
     public Batalla(ArrayList<Luchador> luchadores, Monstruo monstruo) {
+
         calculoDañoDados();
         this.luchadores = luchadores;
         this.monstruo = monstruo;
         this.primerAtaque = -1;
+
     }
 
     private int dado6Caras() {
+
         return (ThreadLocalRandom.current().nextInt(1, 6 + 1));
+
     }
 
     private int dado8Caras() {
+
         return (ThreadLocalRandom.current().nextInt(1, 8 + 1));
+
     }
 
     private int restaDados() {
+
         return dado8Caras() - dado6Caras();
+
     }
 
     private void calculoDañoDados() {
+
         int restaDados = restaDados();
 
         if (restaDados > 1) {
             this.dañoDados = 2 * restaDados;
-            IO.output("El daño será: " + this.dañoDados);
+            System.out.println("El daño será: " + this.dañoDados);
         }
-
         if (restaDados < 1) {
             this.dañoDados = Math.abs(restaDados);
-            IO.output("El daño será: " + this.dañoDados);
+            System.out.println("El daño será: " + this.dañoDados);
         } else {
             this.dañoDados = 0;
-            IO.output("No hay aumento del daño");
+            System.out.println("No hay aumento del daño");
         }
 
     }
@@ -78,19 +86,27 @@ public class Batalla {
     }
 
     private double calculoDañoLM(Luchador atacante, Monstruo atacado) {
+
         double daño = atacado.getAtk() - atacado.getDef();
+
         if (daño < 0) {
             daño = 0;
         }
+
         return daño;
+
     }
 
     private double calculoDañoML(Monstruo atacante, Luchador atacado) {
+
         double daño = atacado.getAtk() - atacado.getDef();
+
         if (daño < 0) {
             daño = 0;
         }
+
         return daño;
+
     }
 
     private void ordenarAtaqueLuchadores() {
@@ -105,40 +121,64 @@ public class Batalla {
             j = p - 1;
 
             while ((j >= 0) && (auxSpd < this.luchadores.get(j).getSpd())) {
+
                 this.luchadores.set(j + 1, this.luchadores.get(j));
                 j--;
+
             }
 
             this.luchadores.set(j + 1, auxLuch);
+
         }
+
     }
 
     private void quitarMuertos() {
+
         for (int i = 0; i < this.luchadores.size(); i++) {
+
             if (this.luchadores.get(i).getHp() == 0) {
+
                 luchadores.remove(i);
+
             }
+
         }
+
     }
 
     private void compararSpdLM() {
+
         if (this.monstruo.getSpd() > this.luchadores.get(this.luchadores.size() - 1).getSpd()) {
             this.primerAtaque = 1;
         } else {
             this.primerAtaque = 0;
         }
-    }
 
-    public void mostrarLuchadores() {
-        System.out.println("Desordenados:");
-        for (int i = 0; i < this.luchadores.size(); i++) {
-            this.luchadores.get(i).showInfo();
+    }
+    
+    public String pelear(){
+    
+        if(this.primerAtaque ==1){
+        
+            for(int i=0; i<6; i++){
+           
+                this.luchadores.get(i).setHp(0);
+            
+            }
+            
+            quitarMuertos();
+            
+            return "El monstruo mato a todos uno a uno";
+        
         }
-        System.out.println("Ordenados:");
-        ordenarAtaqueLuchadores();
-        for (int i = 0; i < this.luchadores.size(); i++) {
-            this.luchadores.get(i).showInfo();
+        else{
+        
+            this.monstruo.setHp(0);
+            return "El luchador mas rapido acabo con el monstruo";
+            
         }
+    
     }
 
 }

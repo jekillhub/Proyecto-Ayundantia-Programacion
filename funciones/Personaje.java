@@ -1,3 +1,5 @@
+package com.mycompany.proyectoayudantiaprogra.funciones;
+
 public abstract class Personaje {
 
 	protected String faccion;
@@ -6,8 +8,8 @@ public abstract class Personaje {
 	protected double def;
 	protected double spd;
 
-	protected abstract void chosenFaction();
+	protected abstract String elegirFaccion();
 
-	protected abstract void showInfo();
+	protected abstract String mostrarInformacion();
 
 }

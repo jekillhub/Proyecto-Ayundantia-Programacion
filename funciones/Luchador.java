@@ -1,8 +1,8 @@
-package proyectoayudantia;
+package com.mycompany.proyectoayudantiaprogra.funciones;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Luchador {
+public class Luchador extends Personaje {
 
     private String nombre;
     private String faccion;
@@ -16,16 +16,23 @@ public class Luchador {
 
     public Luchador() {
 
-        this.nombre = chosenName();
-        this.faccion = chosenFaction();
-        this.rango = generatorStars();
+        this.nombre = elegirNombre();
+        this.faccion = elegirFaccion();
+        this.rango = generarEstrellas();
+        aleatorizarCaracteristicas();
+
+    }
+
+    private void aleatorizarCaracteristicas() {
+
         this.hp = (ThreadLocalRandom.current().nextInt(200, 500 + 1)) * this.rango;
         this.atk = (ThreadLocalRandom.current().nextInt(20, 70 + 1)) * this.rango;
         this.def = (ThreadLocalRandom.current().nextInt(5, 25 + 1)) * this.rango;
         this.spd = (ThreadLocalRandom.current().nextInt(10, 100 + 1)) * this.rango;
+
     }
 
-    private String chosenName() {
+    private String elegirNombre() {
         int opc = 0;
         String name = "";
 
@@ -83,7 +90,7 @@ public class Luchador {
 
     }
 
-    private String chosenFaction() {
+    protected String elegirFaccion() {
         int opc = 0;
         String faction = "";
 
@@ -104,7 +111,7 @@ public class Luchador {
         return faction;
     }
 
-    private int generatorStars() {
+    private int generarEstrellas() {
 
         int probabilidad = ThreadLocalRandom.current().nextInt(1, 100 + 1);
         int estrellas = 0;
@@ -128,22 +135,50 @@ public class Luchador {
         return estrellas;
     }
 
-    public void showInfo() {
+    @Override
+    public String mostrarInformacion() {
 
-        IO.output("El nombre es: " + getNombre());
-        IO.output("La facción es: " + getFaccion());
-        IO.output("El rango es: " + getRango());
-        IO.output("El ataque es: " + getAtk());
-        IO.output("La defensa es: " + getDef());
-        IO.output("La fuerza vital es: " + getHp());
-        IO.output("La velocidad es: " + getSpd());
-        IO.output("");
+        return "El nombre es: " + this.nombre + "\n"
+                + "La facción es: " + this.faccion + "\n"
+                + "El rango es: " + this.rango + "\n"
+                + "El ataque es: " + this.atk + "\n"
+                + "La defensa es: " + this.def + "\n"
+                + "La fuerza vital es: " + this.hp + "\n"
+                + "La velocidad es: " + this.spd + "\n"
+                + "";
+    }
+    
+    public String mostrarObjeto(){
+    
+        /*Al querer mostrar la informacion del ObjetoEquipable nos podemos encontrar con que el Luchador no tenga inicializado uno
+          (no posea un ObjetoEquipable), lo cual gatilla un RuntimeException, la solucion es capturar el error y avisar al usuario
+          que el Luchador seleccionado no posee un ObjetoEquipable equipado.
+        */
+        
+        try{
+        
+            return objEq.mostrarMejora(); 
+        
+        }catch(RuntimeException r){
+        
+            return "El luchador " + this.nombre + " no equipa un objeto" + "\n";
+        }
+    
+    }
+    
+    public String infoCompleta(){
+    
+        StringBuilder informacion = new StringBuilder();
+        informacion.append(this.mostrarInformacion());
+        informacion.append(this.mostrarObjeto());
+        return informacion.toString();
+    
     }
 
     public void equiparObjeto(ObjetoEquipable obj1) {
 
         this.objEq = obj1;
-        IO.output("Has equipado " + this.objEq.getCaracteristica());
+        System.out.println("Has equipado " + this.objEq.getCaracteristica());
 
         if (this.objEq.getCaracteristica() == "Armadura") {
             this.statSinObj = this.hp;
@@ -164,7 +199,30 @@ public class Luchador {
             this.statSinObj = this.spd;
             this.spd = this.spd + this.objEq.getMejoraTotal();
         }
-        IO.output("");
+        System.out.println("");
+
+    }
+
+    public int inventarioContiene(ObjetoEquipable obj1) {
+
+        InventarioObjetos inventario = new InventarioObjetos();
+        int posicion = 0;
+
+        for (int i = 0; i < inventario.getObjetos().size(); i++) {
+
+            if (inventario.getObjetos().get(i).getCaracteristica().equals(objEq.getCaracteristica())) {
+
+                posicion = i;
+
+            } else {
+
+                posicion = -1;
+
+            }
+
+        }
+
+        return posicion;
     }
 
     public void desequiparObjeto() {
@@ -185,8 +243,11 @@ public class Luchador {
             this.spd = this.statSinObj;
         }
 
-        IO.output("Has desequipado " + this.objEq.getCaracteristica());
-        IO.output("");
+        System.out.println("Has desequipado " + this.objEq.getCaracteristica());
+        System.out.println("");
+
+        InventarioObjetos inventario = new InventarioObjetos();
+        inventario.getObjetos().add(objEq);
 
     }
 
